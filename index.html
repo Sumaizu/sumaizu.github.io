@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Games on Stream — игры для стримов на Twitch</title>
+<meta name="description" content="Игры для чата Twitch: вставь ссылку в OBS и играй вместе со зрителями.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffb547'/%3E%3Ctext x='16' y='24' font-family='Arial' font-weight='900' font-size='22' text-anchor='middle' fill='%23241a06'%3EG%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #14121f;
+    --panel: #1d1a2e;
+    --line: #322e49;
+    --ink: #ece8df;
+    --muted: #9f9bb5;
+    --accent: #ffb547;
+    --accent-ink: #241a06;
+  }
+
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+
+  body {
+    margin: 0; padding: 20px 20px 48px; color: var(--ink); background: var(--bg);
+    font: 15px/1.45 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  p { margin: 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page { max-width: 1180px; margin: 0 auto; display: grid; gap: 16px; }
+  .top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+  h1 {
+    margin: 0; font-size: 24px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .tagline { color: var(--muted); }
+  .author { margin-left: auto; color: var(--muted); }
+  .author a { color: var(--accent); font-weight: 700; text-decoration: none; }
+  .author a:hover { text-decoration: underline; }
+
+  .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .game {
+    display: grid; gap: 12px; align-content: start; padding: 16px 18px 18px; border-radius: 14px;
+    background: var(--panel); border: 1px solid var(--line); color: inherit; text-decoration: none;
+  }
+  .game:hover { border-color: var(--accent); }
+  .game img { display: block; width: 100%; height: auto; border-radius: 8px; }
+  .game h2 { margin: 0; font-size: 20px; font-weight: 800; }
+  .game p { color: var(--muted); }
+  .open {
+    justify-self: start; padding: 8px 14px; border-radius: 9px; font-weight: 600;
+    background: var(--accent); color: var(--accent-ink);
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="top">
+    <h1>Games on Stream</h1>
+    <p class="tagline">игры для стримов на Twitch</p>
+    <p class="author">Создано <a href="https://twitch.tv/sumaizu" target="_blank" rel="noopener">Sumaizu</a></p>
+  </header>
+
+  <div class="games">
+    <a class="game" href="slovolov/">
+      <img src="images/slovolov.png" alt="Словолов: буквы, слова в клетках, чат и счёт" width="1280" height="720">
+      <h2>Словолов</h2>
+      <p>Игра в слова для чата. На экране буквы — зрители собирают из них слова и пишут в чат. Настрой, скопируй ссылку и вставь в OBS: ставить ничего не нужно.</p>
+      <span class="open">Открыть</span>
+    </a>
+  </div>
+</main>
+</body>
+</html>
