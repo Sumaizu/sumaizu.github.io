@@ -5,84 +5,198 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Games on Stream — игры для стримов на Twitch</title>
 <meta name="description" content="Игры для чата Twitch: вставь ссылку в OBS и играй вместе со зрителями.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ffb547'/%3E%3Ctext x='16' y='24' font-family='Arial' font-weight='900' font-size='22' text-anchor='middle' fill='%23241a06'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffb547'/%3E%3Cstop offset='.5' stop-color='%23ff7aa8'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M24 14h72a20 20 0 0 1 20 20v38a20 20 0 0 1-20 20H56l-22 18v-18H24A20 20 0 0 1 4 72V34a20 20 0 0 1 20-20z' fill='url(%23g)'/%3E%3Cg fill='%231a1230'%3E%3Crect x='24' y='47' width='30' height='10' rx='3'/%3E%3Crect x='34' y='37' width='10' height='30' rx='3'/%3E%3Ccircle cx='82' cy='42' r='7'/%3E%3Ccircle cx='96' cy='56' r='7'/%3E%3C/g%3E%3C/svg%3E">
 <style>
   :root {
     color-scheme: dark;
-    --bg: #14121f;
-    --panel: #1d1a2e;
-    --line: #322e49;
-    --ink: #ece8df;
-    --muted: #9f9bb5;
-    --accent: #ffb547;
-    --accent-ink: #241a06;
+    --bg: #0f0d19;
+    --panel: #1a172c;
+    --line: #2c2843;
+    --ink: #f1ede4;
+    --muted: #a29eb9;
+    --gold: #ffb547;
+    --pink: #ff7aa8;
+    --green: #22c55e;
+    --blue: #38bdf8;
   }
 
   * { box-sizing: border-box; }
   html { background: var(--bg); }
 
   body {
-    margin: 0; padding: 20px 20px 48px; color: var(--ink); background: var(--bg);
-    font: 15px/1.45 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0; color: var(--ink); background: var(--bg);
+    font: 16px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
+  a { color: inherit; }
   p { margin: 0; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-  .page { max-width: 1180px; margin: 0 auto; display: grid; gap: 16px; }
-  .top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
-  h1 {
-    margin: 0; font-size: 24px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--accent);
-  }
-  .tagline { color: var(--muted); }
+  .page { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+  .top { display: flex; align-items: center; gap: 32px; padding: 20px 0; }
+  .logo { display: block; flex: none; }
+  .logo img { display: block; width: 209px; height: auto; }
+  .nav { display: flex; gap: 22px; color: var(--muted); font-weight: 600; }
+  .nav a { text-decoration: none; }
+  .nav a:hover { color: var(--ink); }
   .author { margin-left: auto; color: var(--muted); }
-  .author a { color: var(--accent); font-weight: 700; text-decoration: none; }
-  .author a:hover { text-decoration: underline; }
+  .author a, .foot a { color: var(--gold); font-weight: 700; text-decoration: none; }
+  .author a:hover, .foot a:hover { text-decoration: underline; }
 
-  .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-  .game {
-    display: grid; gap: 12px; align-content: start; padding: 16px 18px 18px; border-radius: 14px;
-    background: var(--panel); border: 1px solid var(--line); color: inherit; text-decoration: none;
+  .feature {
+    display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: center; padding: 36px;
+    border-radius: 26px; border: 1px solid rgba(56, 189, 248, .35); box-shadow: 0 30px 80px rgba(56, 189, 248, .1);
+    background: radial-gradient(600px 400px at 75% 50%, rgba(56, 189, 248, .22), transparent 70%), var(--panel);
   }
-  .game:hover { border-color: var(--accent); }
-  .game img { display: block; width: 100%; height: auto; border-radius: 8px; }
-  .game h2 { margin: 0; font-size: 20px; font-weight: 800; }
-  .game p { color: var(--muted); }
-  .open {
-    justify-self: start; padding: 8px 14px; border-radius: 9px; font-weight: 600;
-    background: var(--accent); color: var(--accent-ink);
+  .feature .text { display: grid; gap: 16px; padding-left: 8px; }
+  .badge {
+    justify-self: start; padding: 4px 12px; border-radius: 99px; font-size: 13px; font-weight: 900;
+    letter-spacing: .06em; background: var(--blue); color: #04121c;
+  }
+  .feature h1 { margin: 0; font-size: 52px; line-height: 1; font-weight: 900; }
+  .feature p { font-size: 17.5px; color: #cfd8e6; }
+  .feature .cover { display: block; transform: rotate(1.2deg); }
+  .feature .cover img {
+    display: block; width: 100%; height: auto; border-radius: 18px; border: 2px solid rgba(56, 189, 248, .5);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 6px; }
+  .play {
+    padding: 13px 26px; border-radius: 12px; font-weight: 800; text-decoration: none;
+    background: var(--blue); color: #04121c; box-shadow: 0 4px 0 #1e7fae;
+  }
+  .ghost {
+    padding: 12px 20px; border-radius: 12px; font-weight: 700; text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .2);
+  }
+  .ghost:hover { border-color: rgba(255, 255, 255, .45); }
+
+  .how {
+    display: grid; grid-template-columns: auto repeat(3, 1fr); gap: 20px; align-items: center;
+    margin: 28px 0 56px; padding: 22px 28px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line);
+  }
+  .how h2 { margin: 0; padding-right: 12px; font-size: 18px; font-weight: 900; }
+  .how div { display: flex; gap: 12px; align-items: center; color: var(--muted); }
+  .how b {
+    flex: none; font-size: 30px; font-weight: 900; line-height: 1;
+    background: linear-gradient(var(--gold), var(--pink)); -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .how span { color: var(--ink); font-weight: 700; }
+
+  .games-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 18px; }
+  .games-head h2 { margin: 0; font-size: 30px; font-weight: 900; }
+  .games-head p { color: var(--muted); }
+  .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .game {
+    --color: var(--gold); display: block; border-radius: 18px; overflow: hidden; text-decoration: none;
+    background: var(--panel); border: 1px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .game:hover {
+    transform: translateY(-4px); border-color: var(--color);
+    box-shadow: 0 18px 44px color-mix(in srgb, var(--color) 25%, transparent);
+  }
+  .game.slovotron { --color: var(--green); }
+  .game.chatoborona { --color: var(--blue); }
+  .game img { display: block; width: 100%; height: auto; }
+  .game .body { display: grid; gap: 6px; padding: 16px 20px 20px; }
+  .game .kind { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--color); }
+  .game .name { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .game h3 { margin: 0; font-size: 21px; font-weight: 900; }
+  .game .go { font-weight: 800; color: var(--color); }
+  .game p { color: var(--muted); font-size: 15px; }
+
+  .foot {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 64px;
+    padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14.5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .game { transition: none; }
+    .game:hover { transform: none; }
+  }
+
+  @media (max-width: 860px) {
+    .page { padding: 0 16px; }
+    .nav, .author { display: none; }
+    .logo img { width: 176px; }
+    .feature { grid-template-columns: 1fr; gap: 22px; padding: 18px; }
+    .feature .cover { transform: none; }
+    .feature .text { order: 2; padding: 0 4px 6px; }
+    .feature h1 { font-size: 40px; }
+    .feature p { font-size: 16px; }
+    .how { grid-template-columns: 1fr; padding: 20px; }
+    .games-head { display: grid; }
+    .games { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <main class="page">
   <header class="top">
-    <h1>Games on Stream</h1>
-    <p class="tagline">игры для стримов на Twitch</p>
+    <a class="logo" href="/"><img src="images/logo.png" alt="Games on Stream" width="527" height="121"></a>
+    <nav class="nav"><a href="#games">Игры</a><a href="#how">Как подключить</a></nav>
     <p class="author">Создано <a href="https://twitch.tv/sumaizu" target="_blank" rel="noopener">Sumaizu</a></p>
   </header>
 
+  <section class="feature">
+    <div class="text">
+      <span class="badge">НОВАЯ ИГРА</span>
+      <h1>Чатоборона</h1>
+      <p>Защити базу всем чатом. Зрители встают на поле защитниками, качаются от игры к игре, крутят гачу — а волны мобов идут, пока база не падёт.</p>
+      <div class="actions">
+        <a class="play" href="chatoborona/">Играть</a>
+        <a class="ghost" href="#games">Все игры</a>
+      </div>
+    </div>
+    <a class="cover" href="chatoborona/" tabindex="-1">
+      <img src="images/cover-chatoborona.webp" alt="Чатоборона: отряд защитников против слизней, демона и дракона" width="1280" height="720">
+    </a>
+  </section>
+
+  <section class="how" id="how">
+    <h2>Как подключить</h2>
+    <div><b>1</b><p><span>Выбери игру</span><br>и впиши свой канал</p></div>
+    <div><b>2</b><p><span>Скопируй ссылку</span><br>для OBS</p></div>
+    <div><b>3</b><p><span>Вставь в OBS</span><br>как источник «Браузер»</p></div>
+  </section>
+
+  <div class="games-head" id="games">
+    <h2>Все игры</h2>
+    <p>Бесплатно · ничего не нужно ставить</p>
+  </div>
   <div class="games">
     <a class="game" href="slovolov/">
-      <img src="images/slovolov.png" alt="Словолов: буквы, слова в клетках, чат и счёт" width="1280" height="720">
-      <h2>Словолов</h2>
-      <p>Игра в слова для чата. На экране буквы — зрители собирают из них слова и пишут в чат. Настрой, скопируй ссылку и вставь в OBS: ставить ничего не нужно.</p>
-      <span class="open">Открыть</span>
+      <img src="images/cover-slovolov.webp" alt="Словолов: буквы на плашках и угаданные слова в клетках" width="1280" height="720">
+      <div class="body">
+        <span class="kind">Слова на скорость</span>
+        <div class="name"><h3>Словолов</h3><span class="go">Играть →</span></div>
+        <p>Зрители собирают слова из букв на экране и пишут в чат. Кто первый — того и очки.</p>
+      </div>
     </a>
-    <a class="game" href="slovotron/">
-      <img src="images/slovotron.png" alt="Словотрон: слова с числами близости, чат и победители" width="1280" height="720">
-      <h2>Словотрон</h2>
-      <p>Угадай слово по смыслу. Игра загадала слово — зрители пишут в чат свои и видят, насколько каждое близко. Играй в браузере или вставь ссылку в OBS: ставить ничего не нужно.</p>
-      <span class="open">Открыть</span>
+    <a class="game slovotron" href="slovotron/">
+      <img src="images/cover-slovotron.webp" alt="Словотрон: слова с числами близости к загаданному" width="1280" height="720">
+      <div class="body">
+        <span class="kind">Слова по смыслу</span>
+        <div class="name"><h3>Словотрон</h3><span class="go">Играть →</span></div>
+        <p>Игра загадала слово — зрители пишут свои и видят, насколько каждое близко к ответу.</p>
+      </div>
     </a>
-    <a class="game" href="chatoborona/">
-      <img src="images/chatoborona.png" alt="Чатоборона: снежная карта с рекой и горами, защитники, мобы, гача, отряд и карточка игрока" width="1280" height="720">
-      <h2>Чатоборона</h2>
-      <p>Защита базы всем чатом. Зрители пишут в чат — и встают на поле защитниками со случайными классами, качаются от игры к игре и крутят гачу, а волны мобов идут, пока база не падёт. Играй в браузере или вставь ссылку в OBS: ставить ничего не нужно.</p>
-      <span class="open">Открыть</span>
+    <a class="game chatoborona" href="chatoborona/">
+      <img src="images/cover-chatoborona.webp" alt="Чатоборона: отряд защитников против волны мобов" width="1280" height="720">
+      <div class="body">
+        <span class="kind">Защита базы</span>
+        <div class="name"><h3>Чатоборона</h3><span class="go">Играть →</span></div>
+        <p>Весь чат — отряд защитников: классы, прокачка, гача и волны мобов.</p>
+      </div>
     </a>
   </div>
+
+  <footer class="foot">
+    <p>Создано <a href="https://twitch.tv/sumaizu" target="_blank" rel="noopener">Sumaizu</a> · игры бесплатные — запускай на своих стримах</p>
+    <p>gamesonstream.ru</p>
+  </footer>
 </main>
 </body>
 </html>
