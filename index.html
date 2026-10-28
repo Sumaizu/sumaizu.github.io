@@ -54,6 +54,9 @@
     justify-self: start; padding: 4px 12px; border-radius: 99px; font-size: 13px; font-weight: 900;
     letter-spacing: .06em; background: var(--gold); color: #2a1a04;
   }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge.alpha { background: #d0201a; color: #fff; }
+  .alpha-kind { color: #ff5a4f; }
   .feature h1 { margin: 0; font-size: 52px; line-height: 1; font-weight: 900; }
   .feature p { font-size: 17.5px; color: #cfd8e6; }
   .feature .cover { display: block; transform: rotate(1.2deg); }
@@ -125,7 +128,10 @@
     .feature { grid-template-columns: 1fr; gap: 22px; padding: 18px; }
     .feature .cover { transform: none; }
     .feature .text { order: 2; padding: 0 4px 6px; }
-    .feature h1 { font-size: 40px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge.alpha { background: #d0201a; color: #fff; }
+  .alpha-kind { color: #ff5a4f; }
+  .feature h1 { font-size: 40px; }
     .feature p { font-size: 16px; }
     .how { grid-template-columns: 1fr; padding: 20px; }
     .games-head { display: grid; }
@@ -143,7 +149,7 @@
 
   <section class="feature">
     <div class="text">
-      <span class="badge">НОВАЯ ИГРА</span>
+      <div class="badges"><span class="badge">НОВАЯ ИГРА</span><span class="badge alpha">ТЕСТОВАЯ АЛЬФА-ВЕРСИЯ</span></div>
       <h1>Гладиаторы</h1>
       <p>Бои на арене всем чатом. Зрители становятся гладиаторами, готовятся к бою в лудусе и дерутся все против всех. Прогресс копится от боя к бою — но погибший гладиатор пропадает навсегда.</p>
       <div class="actions">
@@ -195,7 +201,7 @@
     <a class="game gladiatory" href="gladiatory/">
       <img src="images/cover-gladiatory.webp" alt="Гладиаторы: поединки на арене перед полными трибунами" width="1280" height="720">
       <div class="body">
-        <span class="kind">Бои на арене</span>
+        <span class="kind">Бои на арене · <b class="alpha-kind">альфа-версия</b></span>
         <div class="name"><h3>Гладиаторы</h3><span class="go">Играть →</span></div>
         <p>Каждый зритель — гладиатор: лудус, прокачка и бой все против всех. Погибший пропадает навсегда.</p>
       </div>
