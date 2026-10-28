@@ -46,25 +46,25 @@
 
   .feature {
     display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: center; padding: 36px;
-    border-radius: 26px; border: 1px solid rgba(56, 189, 248, .35); box-shadow: 0 30px 80px rgba(56, 189, 248, .1);
-    background: radial-gradient(600px 400px at 75% 50%, rgba(56, 189, 248, .22), transparent 70%), var(--panel);
+    border-radius: 26px; border: 1px solid rgba(255, 181, 71, .35); box-shadow: 0 30px 80px rgba(255, 181, 71, .1);
+    background: radial-gradient(600px 400px at 75% 50%, rgba(255, 181, 71, .2), transparent 70%), var(--panel);
   }
   .feature .text { display: grid; gap: 16px; padding-left: 8px; }
   .badge {
     justify-self: start; padding: 4px 12px; border-radius: 99px; font-size: 13px; font-weight: 900;
-    letter-spacing: .06em; background: var(--blue); color: #04121c;
+    letter-spacing: .06em; background: var(--gold); color: #2a1a04;
   }
   .feature h1 { margin: 0; font-size: 52px; line-height: 1; font-weight: 900; }
   .feature p { font-size: 17.5px; color: #cfd8e6; }
   .feature .cover { display: block; transform: rotate(1.2deg); }
   .feature .cover img {
-    display: block; width: 100%; height: auto; border-radius: 18px; border: 2px solid rgba(56, 189, 248, .5);
+    display: block; width: 100%; height: auto; border-radius: 18px; border: 2px solid rgba(255, 181, 71, .5);
     box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
   }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 6px; }
   .play {
     padding: 13px 26px; border-radius: 12px; font-weight: 800; text-decoration: none;
-    background: var(--blue); color: #04121c; box-shadow: 0 4px 0 #1e7fae;
+    background: var(--gold); color: #2a1a04; box-shadow: 0 4px 0 #a8742a;
   }
   .ghost {
     padding: 12px 20px; border-radius: 12px; font-weight: 700; text-decoration: none;
@@ -88,7 +88,7 @@
   .games-head { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 18px; }
   .games-head h2 { margin: 0; font-size: 30px; font-weight: 900; }
   .games-head p { color: var(--muted); }
-  .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .games { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .game {
     --color: var(--gold); display: block; border-radius: 18px; overflow: hidden; text-decoration: none;
     background: var(--panel); border: 1px solid var(--line); transition: transform .2s, box-shadow .2s, border-color .2s;
@@ -99,6 +99,7 @@
   }
   .game.slovotron { --color: var(--green); }
   .game.chatoborona { --color: var(--blue); }
+  .game.gladiatory { --color: #e0524a; }
   .game img { display: block; width: 100%; height: auto; }
   .game .body { display: grid; gap: 6px; padding: 16px 20px 20px; }
   .game .kind { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--color); }
@@ -143,15 +144,15 @@
   <section class="feature">
     <div class="text">
       <span class="badge">НОВАЯ ИГРА</span>
-      <h1>Чатоборона</h1>
-      <p>Защити базу всем чатом. Зрители встают на поле защитниками, качаются от игры к игре, крутят гачу — а волны мобов идут, пока база не падёт.</p>
+      <h1>Гладиаторы</h1>
+      <p>Бои на арене всем чатом. Зрители становятся гладиаторами, готовятся к бою в лудусе и дерутся все против всех. Прогресс копится от боя к бою — но погибший гладиатор пропадает навсегда.</p>
       <div class="actions">
-        <a class="play" href="chatoborona/">Играть</a>
+        <a class="play" href="gladiatory/">Играть</a>
         <a class="ghost" href="#games">Все игры</a>
       </div>
     </div>
-    <a class="cover" href="chatoborona/" tabindex="-1">
-      <img src="images/cover-chatoborona.webp" alt="Чатоборона: отряд защитников против слизней, демона и дракона" width="1280" height="720">
+    <a class="cover" href="gladiatory/" tabindex="-1">
+      <img src="images/cover-gladiatory.webp" alt="Гладиаторы: поединки на арене перед полными трибунами" width="1280" height="720">
     </a>
   </section>
 
@@ -189,6 +190,14 @@
         <span class="kind">Защита базы</span>
         <div class="name"><h3>Чатоборона</h3><span class="go">Играть →</span></div>
         <p>Весь чат — отряд защитников: классы, прокачка, гача и волны мобов.</p>
+      </div>
+    </a>
+    <a class="game gladiatory" href="gladiatory/">
+      <img src="images/cover-gladiatory.webp" alt="Гладиаторы: поединки на арене перед полными трибунами" width="1280" height="720">
+      <div class="body">
+        <span class="kind">Бои на арене</span>
+        <div class="name"><h3>Гладиаторы</h3><span class="go">Играть →</span></div>
+        <p>Каждый зритель — гладиатор: лудус, прокачка и бой все против всех. Погибший пропадает навсегда.</p>
       </div>
     </a>
   </div>
